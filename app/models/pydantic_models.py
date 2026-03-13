@@ -36,7 +36,7 @@ class TeamMemberCreate(BaseModel):
     bio: Optional[str] = Field(None, max_length=1000)
     image_url: Optional[str] = Field(None, max_length=500)
     display_order: int = Field(0, ge=0)
-    social_links: Optional[Dict[str, str]] = Field(default={})  # Fixed: Dict instead of dict
+    social_links: Optional[Dict[str, str]] = Field(default={})
 
     model_config = ConfigDict(json_schema_extra={
         "example": {
@@ -62,7 +62,7 @@ class SignupResponse(BaseModel):
     """Model for signup response"""
     id: uuid.UUID
     name: str
-    email: str  # Fixed: removed the comma after str
+    email: str
     status: str
     message: str = Field(default="Thanks for signing up! We'll notify you when alpha launches.")
     signed_up_at: datetime
@@ -78,7 +78,7 @@ class TeamMemberResponse(BaseModel):
     bio: Optional[str] = None
     image_url: Optional[str] = None
     display_order: int
-    social_links: Optional[Dict[str, str]] = {}  # Fixed: Dict instead of dict
+    social_links: Optional[Dict[str, str]] = {}
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -136,7 +136,7 @@ class ErrorResponse(BaseModel):
 
 class PaginatedResponse(BaseModel):
     """Generic paginated response"""
-    items: List[Any]  # Fixed: List instead of list
+    items: List[Any]
     total: int
     page: int
     size: int
